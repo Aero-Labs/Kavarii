@@ -1,0 +1,20 @@
+
+Deploy Contract on Testnet --  returns new SC address
+erdpy --verbose contract deploy --chain="D" --project=../aeroverse --pem="../aeroverse/walletKey.pem" --gas-limit=80000000 --proxy="https://devnet-gateway.elrond.com" --arguments 0x4b5652492d343033363762 --recall-nonce --send
+
+deposit funds for Faucet
+erdpy --verbose contract call erd1qqqqqqqqqqqqqpgqrws72axly6cpwywrkkytdzkzkljwkj8mv8yqcjfqhq --chain="D" --pem="../aeroverse/walletKey.pem" --gas-limit=8000000 --value 0 --function="ESDTTransfer" --arguments 0x4b5652492d343033363762 105000000000000000000000 0x6465706f736974 --proxy="https://devnet-gateway.elrond.com" --recall-nonce --send
+
+
+set faucet amount - 1000 KVRI
+erdpy --verbose contract call erd1qqqqqqqqqqqqqpgqrws72axly6cpwywrkkytdzkzkljwkj8mv8yqcjfqhq --chain="D" --pem="../aeroverse/walletKey.pem" --gas-limit=8000000 --value 0 --function="setFaucet" --arguments 1000000000000000000000  --proxy="https://devnet-gateway.elrond.com" --recall-nonce --send
+
+
+Faucet Drip - 1000 KVRI
+erdpy --verbose contract call erd1qqqqqqqqqqqqqpgqrws72axly6cpwywrkkytdzkzkljwkj8mv8yqcjfqhq --chain="D" --pem="../aeroverse/walletKey.pem" --gas-limit=8000000 --value 0 --function="faucetDrip" --proxy="https://devnet-gateway.elrond.com" --recall-nonce --send
+
+
+upgrade contract
+erdpy --verbose contract upgrade erd1qqqqqqqqqqqqqpgqrws72axly6cpwywrkkytdzkzkljwkj8mv8yqcjfqhq --chain="D" --project=../aeroverse --pem="../aeroverse/walletKey.pem" --arguments 0x4b5652492d343033363762 --gas-limit=99000000 --proxy="https://devnet-gateway.elrond.com" --recall-nonce --send
+
+
